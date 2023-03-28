@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  agro:
+    container_name: friolog
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./frioLog/:/var/www/html
+      - ./config/sites-available/:/etc/apache2/sites-available/
+    ports:
+      - 8980:80
+    networks:
+      - kamikaze-outside
+networks:
+  kamikaze-outside:
+    external: true
